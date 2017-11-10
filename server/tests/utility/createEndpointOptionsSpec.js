@@ -1,5 +1,5 @@
-const apiInfo = require('../app/api');
-const { createEndpointOptions } = require('../app/utility/createEndpointOptions');
+const apiInfo = require('../../app/api');
+const { createEndpointOptions } = require('../../app/utility/createEndpointOptions');
 
 describe('createEndpointOptions', () => {
   it('should attach api url with version to passed url', () => {

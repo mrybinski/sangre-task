@@ -1,4 +1,4 @@
-const countriesHandler = require('../../app/handlers/population');
+const populationHandler = require('../../app/handlers/population');
 const apiInfo = require('../../app/api');
 
 describe('population', () => {
@@ -7,9 +7,9 @@ describe('population', () => {
       // arrange
       spyOn(apiInfo, 'url').and.returnValue('https://api.url.com');
       spyOn(apiInfo, 'version').and.returnValue('1');
-      const request = { params: { country: 'Poland' } };
+      const requestParameters = { country: 'Poland' };
       // act
-      const apiOptions = countriesHandler.createOptions(request);
+      const apiOptions = populationHandler.createOptions(requestParameters);
 
       // assert
       expect(apiOptions.url).toEqual('https://api.url.com/1/population/Poland/today-and-tomorrow');
@@ -34,7 +34,7 @@ describe('population', () => {
     invalidCases.forEach((invCase) => {
       it('should throw when result data is incorrect', () => {
         // act & assert
-        expect(() => { countriesHandler.handleSuccess(invCase); })
+        expect(() => { populationHandler.handleSuccess(invCase); })
           .toThrow(new Error(`Incorrect population data: ${JSON.stringify(invCase)}`));
       });
     });
@@ -55,7 +55,7 @@ describe('population', () => {
       };
 
       // act
-      const result = countriesHandler.handleSuccess(apiData);
+      const result = populationHandler.handleSuccess(apiData);
 
       // assert
       expect(result).toEqual(211834935);

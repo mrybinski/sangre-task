@@ -6,6 +6,8 @@
     "rules": {
         "linebreak-style": [1, "windows"],
         "func-names": [0],
-        "max-len": [1, 200]
+        "max-len": [1, 200],
+        "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+        "global-require": [0]
     }
 }
