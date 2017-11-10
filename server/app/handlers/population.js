@@ -4,8 +4,8 @@ const url = 'population';
 const urlSuffix = 'today-and-tomorrow';
 
 module.exports = {
-  createOptions(req) {
-    return createEndpointOptions(url, req.params.country, urlSuffix);
+  createOptions(requestParameters) {
+    return createEndpointOptions(url, requestParameters.country, urlSuffix);
   },
 
   handleSuccess(populationData) {

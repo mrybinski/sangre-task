@@ -5,9 +5,9 @@ const sexes = ['male', 'female'];
 const dateOfBirth = '1952-01-01';
 
 module.exports = {
-  createOptions(req) {
+  createOptions(requestParameters) {
     return sexes.map(sexString =>
-      createEndpointOptions(url, sexString, req.params.country, dateOfBirth));
+      createEndpointOptions(url, sexString, requestParameters.country, dateOfBirth));
   },
 
   handleSingleSuccess(expectancyData) {

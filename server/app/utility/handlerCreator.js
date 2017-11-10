@@ -5,7 +5,7 @@ module.exports = {
 
   createHandler(handlerOptions) {
     return async (req, res) => {
-      const options = handlerOptions.createOptions(req);
+      const options = handlerOptions.createOptions(req.params);
 
       await request(options).then((data) => {
         const convertedData = handlerOptions.handleSuccess(data);
@@ -21,7 +21,7 @@ module.exports = {
     return async (req, res) => {
       const requests = [];
 
-      const options = handlerOptions.createOptions(req);
+      const options = handlerOptions.createOptions(req.params);
       for (let i = 0; i < options.length; i += 1) {
         const optionsForRequest = options[i];
         requests.push(request(optionsForRequest).then((data) => {
