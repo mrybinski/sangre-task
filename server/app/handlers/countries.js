@@ -7,7 +7,7 @@ module.exports = {
     return createEndpointOptions(url);
   },
 
-  handleSuccess(countriesArray) {
-    return countriesArray;
+  handleSuccess(countries) {
+    return countries;
   },
 };
