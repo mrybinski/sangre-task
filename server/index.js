@@ -1,7 +1,9 @@
-const { createHandlers } = require('./handlers/handlersFactory');
+const { createRoutes } = require('./app/routing');
 
 const { router } = require('microrouter');
+const micro = require('micro');
 
-const exportedServer = router(...createHandlers());
+const microServer = router(...createRoutes());
 
-module.exports = exportedServer;
+const server = micro(microServer);
+server.listen(3000);

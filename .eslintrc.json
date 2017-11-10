@@ -1,5 +1,8 @@
 {
     "extends": "airbnb",
+    "env": {
+        "jasmine": true
+      },
     "rules": {
         "linebreak-style": [1, "windows"],
         "func-names": [0],

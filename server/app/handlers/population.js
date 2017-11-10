@@ -1,4 +1,4 @@
-const createEndpointOptions = require('../api/createEndpointOptions');
+const { createEndpointOptions } = require('../utility/createEndpointOptions');
 
 const url = 'population';
 const urlSuffix = 'today-and-tomorrow';

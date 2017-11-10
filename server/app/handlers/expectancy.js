@@ -1,4 +1,4 @@
-const createEndpointOptions = require('../api/createEndpointOptions');
+const { createEndpointOptions } = require('../utility/createEndpointOptions');
 
 const url = 'life-expectancy/total';
 const sexes = ['male', 'female'];
