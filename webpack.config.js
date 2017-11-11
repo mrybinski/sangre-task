@@ -38,7 +38,16 @@ module.exports = {
                 query: {
                     plugins: ['transform-class-properties']
                 }
-            }
+            },
+            { 
+                test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
+                include: '/node_modules/font-awesome/fonts/',
+                loader: "url-loader?limit=10000&mimetype=application/font-woff" 
+            },
+            { 
+                test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
+                include: '/node_modules/font-awesome/fonts/',
+                loader: "file-loader?name=fonts/[name].[ext]" },
         ],
         rules: [
             {
@@ -48,7 +57,7 @@ module.exports = {
               loaders: ['babel-loader?plugins[]=transform-class-properties', 'eslint-loader?emitWarning=true'],
             },
             {
-              test: /\.scss$/,
+              test: /\.(s?)css$/,
               use: sassExtract.extract({
                   use: [
                       {

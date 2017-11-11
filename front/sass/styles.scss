@@ -1,7 +1,40 @@
-div {
-  color: green;
+.data-column {
+  position: relative;
 }
 
-li.selected {
-  color: red;
+@media (min-width: 768px) {
+  .data-column {
+    position: relative;
+    height: 100%;
+  }
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+  opacity: 0.7;
+
+  i {
+    font-size: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+}
+
+.scrollable {
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.country-btn {
+  width: 100%;
+  text-align: start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

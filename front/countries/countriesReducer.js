@@ -1,9 +1,12 @@
-import { REQUEST_COUNTRIES, RECEIVE_COUNTRIES, SELECT_COUNTRY, DESELECT_COUNTRY } from './countriesActions';
+import { REQUEST_COUNTRIES, RECEIVE_COUNTRIES, SELECT_COUNTRY, DESELECT_COUNTRY, FILTER_COUNTRY } from './countriesActions';
+import filterCountries from './filteringService';
 
 export function createDefaultCountriesState() {
   return {
     loading: true,
     all: [],
+    filter: '',
+    filtered: [],
     selected: [],
   };
 }
@@ -19,6 +22,7 @@ export default function countriesReducer(state = {}, action) {
         return Object.assign({}, state, {
           loading: false,
           all: action.result.countries,
+          filtered: action.result.countries,
         });
       }
       return state;
@@ -29,6 +33,11 @@ export default function countriesReducer(state = {}, action) {
     case DESELECT_COUNTRY:
       return Object.assign({}, state, {
         selected: state.selected.filter(country => country !== action.country),
+      });
+    case FILTER_COUNTRY:
+      return Object.assign({}, state, {
+        filter: action.filterText,
+        filtered: filterCountries(state.filter, action.filterText, state.filtered, state.all),
       });
     default:
       return state;

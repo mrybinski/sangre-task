@@ -31,7 +31,7 @@ export default function dataReducer(state = {}, action) {
     }
     case HIDE_COUNTRY:
       return Object.assign({}, state, {
-        selected: state.shownEntries.filter(entry => entry.country !== action.country),
+        shownEntries: state.shownEntries.filter(entry => entry.country !== action.country),
       });
     default:
       return state;

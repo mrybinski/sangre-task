@@ -14,6 +14,10 @@ export function receiveCountryData(country, countryData) {
   return { type: RECEIVE_COUNTRY_DATA, country, countryData };
 }
 
+export function hideCountry(country) {
+  return { type: HIDE_COUNTRY, country };
+}
+
 export function showCountry(country) {
   return (dispatch, getState) => {
     const dataState = getState().data;

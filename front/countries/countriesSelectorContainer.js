@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
 import CountriesSelector from './countriesSelector';
-import { selectCountry, deselectCountry } from './countriesActions';
-import { showCountry } from '../data/dataActions';
+import { selectCountry, deselectCountry, filterCountry } from './countriesActions';
+import { showCountry, hideCountry } from '../data/dataActions';
 
 function mapStateToProps(state) {
   return {
     loading: state.countries.loading,
-    data: state.countries.all,
+    data: state.countries.filtered,
     selected: state.countries.selected,
+    filter: state.countries.filter,
   };
 }
 
@@ -19,6 +20,10 @@ function mapDispatchToProps(dispatch) {
     },
     deselect(country) {
       dispatch(deselectCountry(country));
+      dispatch(hideCountry(country));
+    },
+    filterCountry(filterText) {
+      dispatch(filterCountry(filterText));
     },
   };
 }
