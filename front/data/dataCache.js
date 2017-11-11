@@ -3,9 +3,9 @@ export function contains(country, dataState = { cache: { } }) {
 }
 
 export function save(country, countryData, dataState = { cache: { } }) {
-  dataState.cache[country] = countryData;
+  return Object.assign({}, dataState.cache, { [country]: countryData });
 }
 
-export function get(country, countryData, dataState) {
+export function get(country, dataState) {
   return dataState.cache[country];
 }

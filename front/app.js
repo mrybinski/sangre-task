@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { loadCountries } from './countries/countriesActions';
 import configureStore from './store/configureStore';
 import CountriesSelectorContainer from './countries/countriesSelectorContainer';
+import CountryDataTableContainer from './data/countryDataTableContainer';
 import './sass/styles.scss';
 
 require('es6-promise/auto');
@@ -16,7 +17,10 @@ store.dispatch(loadCountries());
 
 ReactDOM.render(
   <Provider store={store}>
-    <CountriesSelectorContainer />
+    <div>
+      <CountriesSelectorContainer />
+      <CountryDataTableContainer />
+    </div>
   </Provider>,
   document.getElementById('app'),
 );

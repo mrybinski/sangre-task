@@ -10,8 +10,8 @@ export function requestCountryData(country) {
   return { type: REQUEST_COUNTRY_DATA, country };
 }
 
-export function receiveCountryData(country) {
-  return { type: RECEIVE_COUNTRY_DATA, country };
+export function receiveCountryData(country, countryData) {
+  return { type: RECEIVE_COUNTRY_DATA, country, countryData };
 }
 
 export function showCountry(country) {
@@ -32,7 +32,7 @@ export function showCountry(country) {
         .then(response => response.json())
         .then((json) => {
           countryData.expectancy = json;
-          dispatch(receiveCountryData(country));
+          dispatch(receiveCountryData(country, countryData));
           dispatch({ type: SHOW_COUNTRY, country });
         });
     }
