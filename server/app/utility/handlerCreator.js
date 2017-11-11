@@ -21,12 +21,10 @@ module.exports = {
     return async (req, res) => {
       const requests = [];
 
-      const options = handlerOptions.createOptions(req.params);
-      for (let i = 0; i < options.length; i += 1) {
-        const optionsForRequest = options[i];
-        requests.push(request(optionsForRequest).then((data) => {
-          return handlerOptions.handleSingleSuccess(data);
-        }));
+      const handlers = handlerOptions.createHandlers(req.params);
+      for (let i = 0; i < handlers.length; i += 1) {
+        const optionsForRequest = handlers[i].options;
+        requests.push(request(optionsForRequest).then(data => handlers[i].handleSuccess(data)));
       }
 
       await Promise.all(requests).then((data) => {

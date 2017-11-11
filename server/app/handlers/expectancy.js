@@ -4,14 +4,17 @@ const url = 'life-expectancy/total';
 const sexes = ['male', 'female'];
 const dateOfBirth = '1952-01-01';
 
-module.exports = {
-  createOptions(requestParameters) {
-    return sexes.map(sexString =>
-      createEndpointOptions(url, sexString, requestParameters.country, dateOfBirth));
-  },
+function handleSingleSuccess(expectancyData) {
+  return expectancyData.total_life_expectancy;
+}
 
-  handleSingleSuccess(expectancyData) {
-    return expectancyData.total_life_expectancy;
+module.exports = {
+  createHandlers(requestParameters) {
+    return sexes.map(sexString =>
+      ({
+        options: createEndpointOptions(url, sexString, requestParameters.country, dateOfBirth),
+        handleSuccess: handleSingleSuccess,
+      }));
   },
 
   handleMultiSuccess(values) {

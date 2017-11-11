@@ -25,18 +25,11 @@ export function showCountry(country) {
       dispatch({ type: SHOW_COUNTRY, country });
     } else {
       dispatch(requestCountryData(country));
-      const countryData = {};
       const countryParameter = encodeURIComponent(country);
-      fetcher(`http://localhost:3000/population/${countryParameter}`)
+      fetcher(`http://localhost:3000/all/${countryParameter}`)
         .then(response => response.json())
         .then((json) => {
-          countryData.population = json;
-          return fetcher(`http://localhost:3000/expectancy/${countryParameter}`);
-        })
-        .then(response => response.json())
-        .then((json) => {
-          countryData.expectancy = json;
-          dispatch(receiveCountryData(country, countryData));
+          dispatch(receiveCountryData(country, json));
           dispatch({ type: SHOW_COUNTRY, country });
         });
     }
