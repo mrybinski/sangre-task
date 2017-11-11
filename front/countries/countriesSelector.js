@@ -20,20 +20,22 @@ export default class CountriesSelector extends PureComponent {
     const selectedItems = this.props.selected;
     const { toggle } = this;
     return (
-      <div className="row country-selector">
+      <div className="col-md-4 country-column">
         <CountriesFilter filter={this.props.filter} onFilterChange={this.props.filterCountry} />
-        {this.props.data.map((countryName) => {
-              const isSelected = selectedItems.indexOf(countryName) >= 0;
-              const className = classNames('btn country-btn', {
-                'btn-primary': isSelected,
-                'btn-default': !isSelected,
-              });
-              return (
-                <div className="col-md-12 col-xs-12" key={countryName}>
-                  <button className={className} onClick={() => toggle(countryName, isSelected)} >{countryName}</button>
-                </div>);
-            })
-            }
+        <div className="row country-selector scrollable">
+          {this.props.data.map((countryName) => {
+                const isSelected = selectedItems.indexOf(countryName) >= 0;
+                const className = classNames('btn country-btn', {
+                  'btn-primary': isSelected,
+                  'btn-default': !isSelected,
+                });
+                return (
+                  <div className="col-md-12 col-xs-12" key={countryName}>
+                    <button className={className} onClick={() => toggle(countryName, isSelected)} >{countryName}</button>
+                  </div>);
+              })
+              }
+        </div>
       </div>
     );
   }

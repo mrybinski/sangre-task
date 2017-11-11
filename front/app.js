@@ -21,9 +21,7 @@ ReactDOM.render(
   <Provider store={store}>
     <div className="container-fluid">
       <div className="row">
-        <div className="col-md-4 scrollable">
-          <CountriesSelectorContainer />
-        </div>
+        <CountriesSelectorContainer />
         <CountryDataTableContainer />
       </div>
     </div>
