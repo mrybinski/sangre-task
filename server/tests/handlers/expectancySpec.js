@@ -2,17 +2,17 @@ const expectancyHandler = require('../../app/handlers/expectancy');
 const apiInfo = require('../../app/api');
 
 describe('expectancy', () => {
-  describe('createOptions', () => {
+  describe('createHandlers', () => {
     it('should pass country parameter from request', () => {
       // arrange
       spyOn(apiInfo, 'url').and.returnValue('https://api.url.com');
       spyOn(apiInfo, 'version').and.returnValue('1');
       const requestParameters = { country: 'Poland' };
       // act
-      const apiOptionsArray = expectancyHandler.createOptions(requestParameters);
+      const apiOptionsArray = expectancyHandler.createHandlers(requestParameters);
 
       // assert
-      expect(apiOptionsArray.map(options => options.url)).toEqual([
+      expect(apiOptionsArray.map(handler => handler.options.url)).toEqual([
         'https://api.url.com/1/life-expectancy/total/male/Poland/1952-01-01',
         'https://api.url.com/1/life-expectancy/total/female/Poland/1952-01-01',
       ]);
@@ -29,9 +29,10 @@ describe('expectancy', () => {
         total_life_expectancy: expectancy,
         sex: 'male',
       };
+      const requestParameters = { country: 'United Kingdom' };
 
       // act
-      const singleResult = expectancyHandler.handleSingleSuccess(returnedData);
+      const singleResult = expectancyHandler.createHandlers(requestParameters)[0].handleSuccess(returnedData);
 
       // assert
       expect(singleResult).toEqual(expectancy);
