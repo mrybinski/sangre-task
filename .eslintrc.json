@@ -1,5 +1,8 @@
 {
     "extends": "airbnb",
+    "globals": {
+        "SERVICE_URL": true
+    },
     "env": {
         "jasmine": true,
         "browser": true

@@ -11,6 +11,7 @@ import CountryDataTableContainer from './data/countryDataTableContainer';
 
 import './sass/styles.scss';
 
+require('es6-object-assign/auto');
 require('es6-promise/auto');
 require('isomorphic-fetch');
 require('font-awesome/css/font-awesome.css');

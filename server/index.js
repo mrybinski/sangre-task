@@ -7,4 +7,14 @@ const cors = require('micro-cors')();
 const microServer = cors(router(...createRoutes()));
 
 const server = micro(microServer);
-server.listen(3000);
+
+const passedArgs = process.argv.slice(2);
+
+// default
+const defaultPort = 3000;
+let port = defaultPort;
+
+if (passedArgs[0]) {
+  port = parseInt(passedArgs[0], 10) || defaultPort;
+}
+server.listen(port);

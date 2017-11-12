@@ -35,7 +35,7 @@ export function filterCountry(filterText) {
 export function loadCountries() {
   return (dispatch) => {
     dispatch(requestCountries());
-    return fetcher('http://localhost:3000/countries')
+    return fetcher('countries')
       .then(json =>
         dispatch(receiveCountries(json)))
       .catch((error) => {

@@ -3,11 +3,9 @@
   "version": "1.0.0",
   "description": "Task for Sangre recruitment process.",
   "scripts": {
-    "start": "node --use_strict server/index.js",
+    "start": "concurrently --kill-others \"node --use_strict server/index.js 3000\" \"webpack-dev-server --history-api-fallback --env.port=3001 --env.apiUrl=http://localhost:3000\"",
     "test_server": "jasmine --config=jasmine/jasmine_server.json",
-    "test_front": "karma start .\\karma.config.js",
-    "poststart": "webpack-dev-server --history-api-fallback",
-    "dev": "concurrently --kill-others \"node --use_strict server/index.js\" \"webpack-dev-server --history-api-fallback\""
+    "test_front": "karma start .\\karma.config.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +20,7 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "classnames": "^2.2.5",
+    "es6-object-assign": "^1.1.0",
     "es6-promise": "^4.1.1",
     "font-awesome": "^4.7.0",
     "isomorphic-fetch": "^2.2.1",

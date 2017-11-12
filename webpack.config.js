@@ -7,6 +7,7 @@ const htmlWebpackPluginConfig = new HtmlWebpackPlugin({
   inject: 'body'
 });
 
+const defaultPort = 3001;
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const sassExtract = new ExtractTextPlugin({
@@ -21,7 +22,14 @@ const scss = {
 
 const webpack = require('webpack');
 
-module.exports = {
+
+
+module.exports = (env) => ({
+    devServer: {
+        contentBase: path.join(__dirname, "dist"),
+        compress: true,
+        port: (env && env.port) || defaultPort
+    },
     context:  path.join(__dirname, '/front'),
     entry: {
         app: "./app.js",
@@ -86,6 +94,9 @@ module.exports = {
     plugins: [
         htmlWebpackPluginConfig,
         sassExtract,
-        new styleLintPlugin(scss)
+        new styleLintPlugin(scss),
+        new webpack.DefinePlugin({
+            'SERVICE_URL': JSON.stringify(env.apiUrl)
+          }),
     ]
-};
+});

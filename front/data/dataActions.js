@@ -33,7 +33,7 @@ export function showCountry(country) {
 
     dispatch(requestCountryData(country));
     const countryParameter = encodeURIComponent(country);
-    return fetcher(`http://localhost:3000/all/${countryParameter}`)
+    return fetcher(`all/${countryParameter}`)
       .then((json) => {
         dispatch(receiveCountryData(country, json));
         dispatch({ type: SHOW_COUNTRY, country });

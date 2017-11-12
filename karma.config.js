@@ -6,10 +6,12 @@ module.exports = function (config) {
     frameworks: ['jasmine'],
     files: [
       './node_modules/phantomjs-polyfill-object-assign/object-assign-polyfill.js',
+      'front/tests/globalParameters.js',
       'front/tests/**/*Spec.js',
     ],
     preprocessors: {
       'front/tests/**/*Spec.js': ['webpack'],
+      'front/tests/globalParameters.js': ['webpack'],
     },
     webpack: webpackConfig,
     reporters: ['spec'],
@@ -17,7 +19,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
     singleRun: false,
     concurrency: Infinity,
   });

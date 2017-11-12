@@ -1,3 +1,5 @@
+import join from 'url-join';
+
 const init = {
   method: 'GET',
   headers: {
@@ -8,6 +10,6 @@ const init = {
 };
 
 export default function corsFetch(url) {
-  return fetch(url, init)
+  return fetch(join(SERVICE_URL, url), init)
     .then(response => response.json());
 }
