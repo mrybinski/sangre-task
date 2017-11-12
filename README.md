@@ -86,3 +86,5 @@ To ensure code style, I used ```eslint``` along with ```stylelint```, the former
 * Tested on both Chrome (61.0.3163.100) and IE (11.1770.14393.0), for the latter I had to install some pollyfills but it is working.
 * Developed on Windows (10.0.14393) using Visual Studio Code.
 * I did not have idea about mobile design, please let me know if I should work more on it.
+* External API seems to have problem with data for regions (for example 'AFRICA').
+* There are almost no comments in code, I do not think that comments should be overused. However, if you would like I can provide more comments for whole source.
