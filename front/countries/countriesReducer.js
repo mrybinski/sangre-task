@@ -1,4 +1,4 @@
-import { REQUEST_COUNTRIES, RECEIVE_COUNTRIES, SELECT_COUNTRY, DESELECT_COUNTRY, FILTER_COUNTRY } from './countriesActions';
+import { REQUEST_COUNTRIES, RECEIVE_COUNTRIES, SELECT_COUNTRY, DESELECT_COUNTRY, FILTER_COUNTRY, ERROR_COUNTRIES } from './countriesActions';
 import filterCountries from './filteringService';
 
 export function createDefaultCountriesState() {
@@ -26,6 +26,10 @@ export default function countriesReducer(state = {}, action) {
         });
       }
       return state;
+    case ERROR_COUNTRIES:
+      return Object.assign({}, state, {
+        loading: false,
+      });
     case SELECT_COUNTRY:
       return Object.assign({}, state, {
         selected: state.selected.concat(action.country),

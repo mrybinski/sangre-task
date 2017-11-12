@@ -1,12 +1,13 @@
-const headers = new Headers();
-
 const init = {
   method: 'GET',
-  headers,
+  headers: {
+    Accept: 'application/json',
+  },
   mode: 'cors',
   cache: 'no-cache',
 };
 
 export default function corsFetch(url) {
-  return fetch(url, init);
+  return fetch(url, init)
+    .then(response => response.json());
 }

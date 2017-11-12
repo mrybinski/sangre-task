@@ -1,4 +1,4 @@
-import { SHOW_COUNTRY, HIDE_COUNTRY, RECEIVE_COUNTRY_DATA, REQUEST_COUNTRY_DATA } from './dataActions';
+import { SHOW_COUNTRY, HIDE_COUNTRY, RECEIVE_COUNTRY_DATA, REQUEST_COUNTRY_DATA, COUNTRY_DATA_ERROR } from './dataActions';
 import { get, save } from './dataCache';
 
 export function createDefaultDataState() {
@@ -19,6 +19,10 @@ export default function dataReducer(state = {}, action) {
       return Object.assign({}, state, {
         loading: false,
         cache: save(action.country, action.countryData, state),
+      });
+    case COUNTRY_DATA_ERROR:
+      return Object.assign({}, state, {
+        loading: false,
       });
     case SHOW_COUNTRY: {
       const countryData = get(action.country, state);
