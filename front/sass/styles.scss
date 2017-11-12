@@ -4,6 +4,17 @@ $filterHeight: 40px;
   position: relative;
 }
 
+@media (max-width: 768px) {
+  .scrollable {
+    overflow-y: visible !important;
+    height: auto !important;
+  }
+
+  .country-selector.scrollable {
+    height: auto !important;
+  }
+}
+
 @media (min-width: 768px) {
   .data-column {
     position: relative;
