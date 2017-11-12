@@ -2,11 +2,12 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { debounce } from 'throttle-debounce';
 
+const debounceTime = 200;
 export default class CountriesFilter extends PureComponent {
   constructor(props) {
     super(props);
     this.state = { filter: '' };
-    this.fireActionDebounced = debounce(200, this.fireChangeAction);
+    this.fireActionDebounced = debounce(debounceTime, this.fireChangeAction);
   }
 
   componentWillReceiveProps(nextProps) {

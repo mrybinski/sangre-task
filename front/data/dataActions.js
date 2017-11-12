@@ -1,6 +1,7 @@
 import fetcher from '../utility/fetcher';
 import { contains } from './dataCache';
 import showError from '../utility/errorHandler';
+import endpoints from '../api';
 
 export const REQUEST_COUNTRY_DATA = 'REQUEST_COUNTRY_DATA';
 export const RECEIVE_COUNTRY_DATA = 'RECEIVE_COUNTRY_DATA';
@@ -33,7 +34,7 @@ export function showCountry(country) {
 
     dispatch(requestCountryData(country));
     const countryParameter = encodeURIComponent(country);
-    return fetcher(`all/${countryParameter}`)
+    return fetcher(`${endpoints.allData}/${countryParameter}`)
       .then((json) => {
         dispatch(receiveCountryData(country, json));
         dispatch({ type: SHOW_COUNTRY, country });

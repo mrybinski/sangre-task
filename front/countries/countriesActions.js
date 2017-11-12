@@ -1,5 +1,6 @@
 import fetcher from '../utility/fetcher';
 import showError from '../utility/errorHandler';
+import endpoints from '../api';
 
 export const REQUEST_COUNTRIES = 'REQUEST_COUNTRIES';
 export const RECEIVE_COUNTRIES = 'RECEIVE_COUNTRIES';
@@ -35,7 +36,7 @@ export function filterCountry(filterText) {
 export function loadCountries() {
   return (dispatch) => {
     dispatch(requestCountries());
-    return fetcher('countries')
+    return fetcher(endpoints.countries)
       .then(json =>
         dispatch(receiveCountries(json)))
       .catch((error) => {

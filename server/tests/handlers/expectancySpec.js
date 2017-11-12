@@ -31,11 +31,12 @@ describe('expectancy', () => {
       };
       const requestParameters = { country: 'United Kingdom' };
 
-      // act
-      const singleResult = expectancyHandler.createHandlers(requestParameters)[0].handleSuccess(returnedData);
-
-      // assert
-      expect(singleResult).toEqual(expectancy);
+      // act & assert
+      const handlers = expectancyHandler.createHandlers(requestParameters);
+      for (let i = 0; i < handlers.length; i += 1) {
+        const singleResult = handlers[i].handleSuccess(returnedData);
+        expect(singleResult).toEqual(expectancy);
+      }
     });
   });
 
