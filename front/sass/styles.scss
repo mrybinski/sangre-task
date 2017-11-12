@@ -41,20 +41,20 @@ $filterHeight: 40px;
   white-space: nowrap;
 }
 
-.country-selector {
-  margin-top: $filterHeight;
-}
-
 .country-selector.scrollable {
   height: calc(100vh - #{$filterHeight});
 }
 
 .country-column {
   position: relative;
+  padding-top: $filterHeight;
 }
 
 .filter {
   position: absolute;
   top: 0;
   left: 0;
+  padding-right: 30px;
+  padding-left: 15px;
+  width: 100%;
 }

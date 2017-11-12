@@ -47,15 +47,14 @@ module.exports = (env) => ({
                     plugins: ['transform-class-properties']
                 }
             },
-            { 
-                test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
-                include: '/node_modules/font-awesome/fonts/',
-                loader: "url-loader?limit=10000&mimetype=application/font-woff" 
-            },
-            { 
-                test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
-                include: '/node_modules/font-awesome/fonts/',
-                loader: "file-loader?name=fonts/[name].[ext]" },
+            {
+                test: /\.(woff(2)?|ttf|eot|svg|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: 'file-loader',
+                options: {
+                    name: 'fonts/[name].[ext]?[hash]',
+                    publicPath: '/'
+                }
+            }
         ],
         rules: [
             {
@@ -67,22 +66,18 @@ module.exports = (env) => ({
             {
               test: /\.(s?)css$/,
               use: sassExtract.extract({
-                  use: [
-                      {
-                          loader: 'css-loader',
-                          options: {
-                              url: false
-                          }
-                      },
-                      {
-                        loader: 'sass-loader',
-                        options: {
-                            url: false
-                        }
-                    }
-                  ]
+                use: 'css-loader!resolve-url-loader!sass-loader?sourceMap',
+                fallback: 'style-loader'
               })
             },
+            {
+                test: /\.(woff(2)?|ttf|eot|svg|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: 'file-loader',
+                options: {
+                    name: 'fonts/[name].[ext]?[hash]',
+                    publicPath: '/'
+                }
+            }
           ],
     },
     devtool: 'inline-source-map',

@@ -25,7 +25,7 @@ export default class CountriesFilter extends PureComponent {
 
   render() {
     return (
-      <div className="filter col-md-12">
+      <div className="filter">
         <input
           type="text"
           className="form-control"
