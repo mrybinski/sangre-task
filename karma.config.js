@@ -5,7 +5,6 @@ module.exports = function (config) {
     basePath: '',
     frameworks: ['jasmine'],
     files: [
-      './node_modules/phantomjs-polyfill-object-assign/object-assign-polyfill.js',
       'front/tests/globalParameters.js',
       'front/tests/**/*Spec.js',
     ],
