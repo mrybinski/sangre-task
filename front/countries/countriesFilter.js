@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { debounce } from 'throttle-debounce';
 
+// input with debouncing should probably be enclosed in DebouncedInput component in real world solution.
+
 const debounceTime = 200;
 export default class CountriesFilter extends PureComponent {
   constructor(props) {
